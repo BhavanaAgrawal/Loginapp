@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "277239310910",
+    "firebase_url": "https://loginapp-5699e.firebaseio.com",
+    "project_id": "loginapp-5699e",
+    "storage_bucket": "loginapp-5699e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277239310910:android:7a17d0d38be0f318",
+        "android_client_info": {
+          "package_name": "com.example.bhavana.loginapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277239310910-e34utuupaeigobsm81rhehgaei6g3rjb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bhavana.loginapp",
+            "certificate_hash": "44e7042a0e05a1ed99122dcb016e60609b551987"
+          }
+        },
+        {
+          "client_id": "277239310910-ppo0gfk6tqaknj30e3h98hn80iedb2li.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5dDYZhBV3L_Ei30-gA_WHC7LMEwPApMA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277239310910-ppo0gfk6tqaknj30e3h98hn80iedb2li.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
