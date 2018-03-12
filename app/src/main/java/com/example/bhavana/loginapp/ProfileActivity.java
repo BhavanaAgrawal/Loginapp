@@ -53,7 +53,7 @@ FirebaseAuth firebaseAuth;
         if (view==btnmap)
         {
             finish();
-            startActivity(new Intent(this,MapsActivity.class));
+            startActivity(new Intent(this,MyLocation.class));
         }
     }
 }
