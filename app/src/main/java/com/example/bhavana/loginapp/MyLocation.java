@@ -43,7 +43,8 @@ public class MyLocation extends AppCompatActivity  implements
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private boolean mPermissionDenied = false;
     private GoogleMap mMap;
-
+LatLng latLng;
+long lat,lon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +106,8 @@ public class MyLocation extends AppCompatActivity  implements
     @Override
     public void onMyLocationClick(@NonNull Location location) {
         Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
+       lat= (long) location.getLatitude();
+       lon=(long)location.getLongitude();
     }
 
     @Override
@@ -141,5 +144,7 @@ public class MyLocation extends AppCompatActivity  implements
         PermissionUtils.PermissionDeniedDialog
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");
     }
+
+
 
 }
