@@ -39,7 +39,7 @@ private ProgressDialog progressDialog;
         {
             finish();
             // start the mapsactivity
-            startActivity(new Intent(getApplicationContext(),MapsActivity.class));
+            startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
         }
 
         //progressBar=new ProgressBar(this);
@@ -147,7 +147,7 @@ private ProgressDialog progressDialog;
                   {
                       finish();
                       // start the mapsactivity
-                      startActivity(new Intent(getApplicationContext(),MapsActivity.class));
+                      startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
                   }
               }
           });
