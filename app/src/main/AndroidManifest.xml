@@ -42,7 +42,8 @@
         <activity android:name=".ProfileActivity" />
         <activity
             android:name=".MyLocation"
-            android:label="@string/title_activity_my_location"></activity>
+            android:label="@string/title_activity_my_location" />
+
     </application>
 
 </manifest>

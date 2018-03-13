@@ -3,6 +3,11 @@ package com.example.bhavana.loginapp;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -14,6 +19,8 @@ import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 //import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -23,6 +30,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -106,8 +114,7 @@ long lat,lon;
     @Override
     public void onMyLocationClick(@NonNull Location location) {
         Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
-       lat= (long) location.getLatitude();
-       lon=(long)location.getLongitude();
+       requestLocationUpdates();
     }
 
     @Override
@@ -145,6 +152,31 @@ long lat,lon;
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");
     }
 
-
+    public void requestLocationUpdates() {
+        // Functionality coming next step
+        LocationRequest request = new LocationRequest();
+        request.setInterval(10000);
+        request.setFastestInterval(5000);
+        request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(this);
+        final String path = getString(R.string.firebase_path) + "/" + getString(R.string.transport_id);
+        int permission = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+        if (permission == PackageManager.PERMISSION_GRANTED) {
+            // Request location updates and when an update is
+            // received, store the location in Firebase
+            client.requestLocationUpdates(request, new LocationCallback() {
+                @Override
+                public void onLocationResult(LocationResult locationResult) {
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference(path);
+                    Location location = locationResult.getLastLocation();
+                    if (location != null) {
+                     //   Log.d(TAG, "location update " + location);
+                        ref.setValue(location);
+                    }
+                }
+            }, null);
+        }
+    }
 
 }
