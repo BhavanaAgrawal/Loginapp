@@ -151,7 +151,10 @@ long lat,lon;
         PermissionUtils.PermissionDeniedDialog
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");
     }
-
+ /*
+ * updating last location location of the user and sending it to the
+ * firebase database
+ * */
     public void requestLocationUpdates() {
         // Functionality coming next step
         LocationRequest request = new LocationRequest();
